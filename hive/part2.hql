@@ -18,13 +18,6 @@ hadoop fs -ls /user/hive/warehouse/focus.db
 
 hadoop fs -ls /user/hive/warehouse/focus.db/customers
 
-hadoop fs -cat /user/hive/warehouse/focus.db/customers/000000_0
-
-hadoop fs -cat /user/hive/warehouse/focus.db/customers/000000_0_copy_1
-
-hadoop fs -cat /user/hive/warehouse/focus.db/customers/000000_0_copy_2
-
-
 Hive
 ————
 
@@ -245,56 +238,4 @@ select * from product_cost;
 truncate table freshproducts;
 
 select * from freshproducts;
-
-CREATE TABLE employees (
-name STRING,
-salary FLOAT,
-subordinates ARRAY<STRING>,
-deductions MAP<STRING, FLOAT>,
-address STRUCT<street:STRING, city:STRING, state:STRING, zip:INT>
-)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY '\001'
-COLLECTION ITEMS TERMINATED BY '\002'
-MAP KEYS TERMINATED BY '\003'
-LINES TERMINATED BY '\n'
-STORED AS TEXTFILE;
-
-CREATE EXTERNAL TABLE IF NOT EXISTS stocks (
-exchange STRING,
-symbol STRING,
-ymd STRING,
-price_open FLOAT,
-price_high FLOAT,
-price_low FLOAT,
-price_close FLOAT,
-volume INT,
-price_adj_close FLOAT)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-LOCATION '/data/stocks';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
